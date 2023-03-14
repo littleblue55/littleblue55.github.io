@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="1.1 外键123456789101112-- 学生表的gradeid字段要去引用年纪表的gradeid-- 定义外键key-- 给这个外键添加约束（执行引用） REFERENCES 引用CREATE TABLE &#96;students&#96; (  &#96;id&#96; int NOT NULL AUTO_INCREMENT COMMENT &amp;#x27;学号&amp;#x27;,  &#96;name&#96; varchar(30) NO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql数据管理">
+<meta property="og:url" content="http://example.com/2023/03/06/mysql-mysql-05/index.html">
+<meta property="og:site_name" content="Littleblue">
+<meta property="og:description" content="1.1 外键123456789101112-- 学生表的gradeid字段要去引用年纪表的gradeid-- 定义外键key-- 给这个外键添加约束（执行引用） REFERENCES 引用CREATE TABLE &#96;students&#96; (  &#96;id&#96; int NOT NULL AUTO_INCREMENT COMMENT &amp;#x27;学号&amp;#x27;,  &#96;name&#96; varchar(30) NO">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="d:/work/blog/source_posts/mysql/mysql-05/image-20230306155623110.png">
+<meta property="article:published_time" content="2023-03-06T07:48:10.000Z">
+<meta property="article:modified_time" content="2023-03-07T06:02:33.215Z">
+<meta property="article:author" content="Littleblue">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="DML语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:/work/blog/source_posts/mysql/mysql-05/image-20230306155623110.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>mysql数据管理</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/categories/">categories</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/littleblue55">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2023/03/07/mysql-mysql-06/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/03/06/mysql-mysql-04/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/03/06/mysql-mysql-05/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/03/06/mysql-mysql-05/&text=mysql数据管理"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/03/06/mysql-mysql-05/&title=mysql数据管理"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/03/06/mysql-mysql-05/&is_video=false&description=mysql数据管理"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=mysql数据管理&body=Check out this article: http://example.com/2023/03/06/mysql-mysql-05/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/03/06/mysql-mysql-05/&title=mysql数据管理"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/03/06/mysql-mysql-05/&title=mysql数据管理"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/03/06/mysql-mysql-05/&title=mysql数据管理"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/03/06/mysql-mysql-05/&title=mysql数据管理"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/03/06/mysql-mysql-05/&name=mysql数据管理&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/03/06/mysql-mysql-05/&t=mysql数据管理"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%A4%96%E9%94%AE"><span class="toc-number">1.</span> <span class="toc-text">1.1 外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-DML%E8%AF%AD%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">1.2 DML语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E6%B7%BB%E5%8A%A0-insert"><span class="toc-number">3.</span> <span class="toc-text">1.3 添加 insert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E4%BF%AE%E6%94%B9-update"><span class="toc-number">4.</span> <span class="toc-text">1.4 修改 update</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E5%88%A0%E9%99%A4"><span class="toc-number">5.</span> <span class="toc-text">1.5 删除</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        mysql数据管理
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Littleblue</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-03-06T07:48:10.000Z" itemprop="datePublished">2023-03-06</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/DML%E8%AF%AD%E8%A8%80/" rel="tag">DML语言</a>, <a class="tag-link-link" href="/tags/mysql/" rel="tag">mysql</a>, <a class="tag-link-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="1-1-外键"><a href="#1-1-外键" class="headerlink" title="1.1 外键"></a>1.1 外键</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 学生表的gradeid字段要去引用年纪表的gradeid</span></span><br><span class="line"><span class="comment">-- 定义外键key</span></span><br><span class="line"><span class="comment">-- 给这个外键添加约束（执行引用） REFERENCES 引用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `students` (</span><br><span class="line">  `id` <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;学号&#x27;</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;匿名&#x27;</span> COMMENT <span class="string">&#x27;姓名&#x27;</span>,</span><br><span class="line">  `gradeid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;年级&#x27;</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`),</span><br><span class="line">  KEY `FK_grade` (`gradeid`),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> `FK_grade` <span class="keyword">FOREIGN</span> KEY (`gradeid`) <span class="keyword">REFERENCES</span> `grade` (`gradeid`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb3</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\work\blog\source_posts\mysql\mysql-05\image-20230306155623110.png" alt="image-20230306155623110"></p>
+<blockquote>
+<p>最佳实现</p>
+</blockquote>
+<ul>
+<li>数据库就是单纯的表，只用来存数据，行（数据）和列（字段）</li>
+<li>想使用多张表的数据，想使用外键，用<strong>程序</strong>实现</li>
+</ul>
+<h2 id="1-2-DML语言"><a href="#1-2-DML语言" class="headerlink" title="1.2 DML语言"></a>1.2 DML语言</h2><p><strong>数据库的意义</strong>：数据存储，数据管理</p>
+<p>DML语言：数据操作语言</p>
+<ul>
+<li>insert </li>
+<li>update</li>
+<li>delete</li>
+</ul>
+<h2 id="1-3-添加-insert"><a href="#1-3-添加-insert" class="headerlink" title="1.3 添加 insert"></a>1.3 添加 insert</h2><p>格式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(`字段名<span class="number">1</span>`,`字段名<span class="number">2</span>`,`字段名<span class="number">3</span>`,...)<span class="keyword">VALUES</span>(<span class="string">&#x27;值1&#x27;</span>,<span class="string">&#x27;值2&#x27;</span>,<span class="string">&#x27;值3&#x27;</span>,...)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 插入语句（添加）</span></span><br><span class="line"><span class="comment">-- INSERT INTO 表名(`字段名1`)VALUES(&#x27;值1&#x27;)</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `grade`(`gradename`) <span class="keyword">VALUES</span>(<span class="string">&#x27;大一&#x27;</span>)</span><br><span class="line"><span class="comment">-- 一般写插入语句，一定要数据和字段一一对应</span></span><br><span class="line"><span class="comment">-- 可以插入多个字段  同个字段 插入多条</span></span><br><span class="line"><span class="comment">-- INSERT INTO 表名(`字段名1`)VALUES(&#x27;值1&#x27;),(&#x27;值2&#x27;),(&#x27;值3&#x27;),...</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `grade`(`gradename`) <span class="keyword">VALUES</span>(<span class="string">&#x27;大二&#x27;</span>),(<span class="string">&#x27;大三&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `students`(`name`) <span class="keyword">VALUES</span>(<span class="string">&#x27;lelush&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- INSERT INTO 表名(`字段名1`,`字段名2`,`字段名3`,...)VALUES(&#x27;值1&#x27;,&#x27;值2&#x27;,&#x27;值3&#x27;,...)</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `students`(`name`,`pwd`,`sex`) <span class="keyword">VALUES</span>(<span class="string">&#x27;lelush&#x27;</span>,<span class="string">&#x27;123213&#x27;</span>,<span class="string">&#x27;女&#x27;</span>)</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `students` <span class="keyword">VALUES</span>(<span class="string">&#x27;lelush&#x27;</span>,<span class="string">&#x27;123213&#x27;</span>,<span class="string">&#x27;女&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 这个缺少id，不可以一一对应</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `students` <span class="keyword">VALUES</span>(<span class="string">&#x27;lelush&#x27;</span>,<span class="string">&#x27;123213&#x27;</span>,<span class="string">&#x27;女&#x27;</span>,<span class="string">&#x27;2002-10-02&#x27;</span>,<span class="string">&#x27;广州&#x27;</span>,<span class="string">&#x27;1248d733@qq.com&#x27;</span>)</span><br><span class="line"><span class="comment">-- 这个可以：INSERT INTO 表名 VALUES(&#x27;字段名1的值&#x27;,&#x27;字段名2的值&#x27;,&#x27;字段名3的值&#x27;,...)</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `students` <span class="keyword">VALUES</span>(<span class="number">3</span>, <span class="string">&#x27;lelush&#x27;</span>,<span class="string">&#x27;123213&#x27;</span>,<span class="string">&#x27;女&#x27;</span>,<span class="string">&#x27;2002-10-02&#x27;</span>,<span class="string">&#x27;广州&#x27;</span>,<span class="string">&#x27;1248d733@qq.com&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项：</strong></p>
+<ol>
+<li><p>字段和字段之间使用英文逗号隔开</p>
+</li>
+<li><p>字段可以省略，但是后面的至必须要一一对应，包括自增的id，不能少</p>
+</li>
+<li><p>可以同时插入多条数据，格式为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(`字段名<span class="number">1</span>,字段名<span class="number">2</span>`,...)<span class="keyword">VALUES</span>(<span class="string">&#x27;第一条数据的值1&#x27;</span>,<span class="string">&#x27;第一条数据的值2&#x27;</span>,...),(<span class="string">&#x27;第二条数据的值1&#x27;</span>,<span class="string">&#x27;第二条数据的值2&#x27;</span>,...)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<blockquote>
+<p>练习</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> `grade`(`gradename`) </span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;三年级&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;四年级&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;五年级&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;六年级&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;初一&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;初二&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;初三&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;高一&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;高二&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;高三&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `students`(`name`,`birth`,`address`,`email`)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;仗义&#x27;</span>,<span class="string">&#x27;2001-1-1&#x27;</span>,<span class="string">&#x27;汕尾&#x27;</span>,<span class="string">&#x27;172222&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;张二&#x27;</span>,<span class="string">&#x27;2003-02-03&#x27;</span>,<span class="string">&#x27;汕头&#x27;</span>,<span class="string">&#x27;155456&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;张三&#x27;</span>,<span class="string">&#x27;2002-3-3&#x27;</span>,<span class="string">&#x27;潮州&#x27;</span>,<span class="string">&#x27;123124&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;张思&#x27;</span>,<span class="string">&#x27;2004-3-1&#x27;</span>,<span class="string">&#x27;揭阳&#x27;</span>,<span class="string">&#x27;2314414&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;账务&#x27;</span>,<span class="string">&#x27;2003-5-3&#x27;</span>,<span class="string">&#x27;惠州&#x27;</span>,<span class="string">&#x27;4214515&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-修改-update"><a href="#1-4-修改-update" class="headerlink" title="1.4 修改 update"></a>1.4 修改 update</h2><p>格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> `table_reference` <span class="keyword">SET</span> `col_name1`<span class="operator">=</span><span class="string">&#x27;expr1&#x27;</span>,`col_name2`<span class="operator">=</span><span class="string">&#x27;expr2&#x27;</span> <span class="keyword">WHERE</span> where_condition;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> `students` <span class="keyword">SET</span> `name`<span class="operator">=</span><span class="string">&#x27;zxc&#x27;</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="comment">-- 不指定条件的情况下，会改动所有表</span></span><br><span class="line"><span class="keyword">UPDATE</span> `students` <span class="keyword">SET</span> `name`<span class="operator">=</span><span class="string">&#x27;zxc&#x27;</span>;</span><br><span class="line"><span class="comment">-- 修改多个属性，用逗号隔开</span></span><br><span class="line"><span class="keyword">UPDATE</span> `students` <span class="keyword">SET</span> `name`<span class="operator">=</span><span class="string">&#x27;zxc1&#x27;</span>,`email`<span class="operator">=</span><span class="string">&#x27;1234me@11.com&#x27;</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>条件：where 子句 运算符 操作符会返回布尔值</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>含义</th>
+<th>例子</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td>等于</td>
+<td>5=6</td>
+<td>false</td>
+</tr>
+<tr>
+<td>&lt;&gt;或者 感叹号＋=</td>
+<td>不等于</td>
+<td>5&lt;&gt;6</td>
+<td>true</td>
+</tr>
+<tr>
+<td>BETWEEN A AND B</td>
+<td>在A和B范围之间</td>
+<td>BETWEEN 2 AND 6</td>
+<td>[2,6]</td>
+</tr>
+<tr>
+<td>AND</td>
+<td>&amp;&amp; 和</td>
+<td>5&gt;1 AND 5&lt;10</td>
+<td>true</td>
+</tr>
+<tr>
+<td>OR</td>
+<td>|| 或者</td>
+<td>5&gt;1 OR 1&gt;2</td>
+<td>true</td>
+</tr>
+</tbody></table>
+<p>注意：</p>
+<ul>
+<li><p>col_name 数据库的列，带上``</p>
+</li>
+<li><p>条件，筛选的条件，如果没有指定，会修改所有的列</p>
+</li>
+<li><p>value，是一个具体的值，也可以是一个变量</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> `students` <span class="keyword">SET</span> `birth`<span class="operator">=</span><span class="built_in">CURRENT_DATE</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="1-5-删除"><a href="#1-5-删除" class="headerlink" title="1.5 删除"></a>1.5 删除</h2><blockquote>
+<p>delete</p>
+</blockquote>
+<p>格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> `table_reference` <span class="keyword">WHERE</span> where_condition;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除数据 (避免这样写，会全部删除)</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> `students`</span><br><span class="line"><span class="comment">-- 删除指定数据：之前的自增不会重置</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> `students` <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>TRUNCATE </p>
+</blockquote>
+<p>DELETE和TRUNCATE的区别：</p>
+<ul>
+<li>相同点：都能删除数据，都不会删除表结构</li>
+<li>不同点<ul>
+<li>TRUNCATE 重新设置 自增列 计时器会归零</li>
+<li>TRUNCATE 不会影响事物</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 作用: 完全清空一个数据库表，表的结构和索引约束不会变!</span></span><br><span class="line"><span class="keyword">TRUNCATE</span> `students` </span><br><span class="line"><span class="comment">-- 清空后 之前的自增也会重置</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>InnoDB 自增列表会从1开始（会存在内存中的，断电即失）</li>
+<li>MyISAM 继续从上一个自增量开始（存在文件中的，不会丢失）</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/littleblue55">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%A4%96%E9%94%AE"><span class="toc-number">1.</span> <span class="toc-text">1.1 外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-DML%E8%AF%AD%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">1.2 DML语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E6%B7%BB%E5%8A%A0-insert"><span class="toc-number">3.</span> <span class="toc-text">1.3 添加 insert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E4%BF%AE%E6%94%B9-update"><span class="toc-number">4.</span> <span class="toc-text">1.4 修改 update</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E5%88%A0%E9%99%A4"><span class="toc-number">5.</span> <span class="toc-text">1.5 删除</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/03/06/mysql-mysql-05/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/03/06/mysql-mysql-05/&text=mysql数据管理"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/03/06/mysql-mysql-05/&title=mysql数据管理"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/03/06/mysql-mysql-05/&is_video=false&description=mysql数据管理"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=mysql数据管理&body=Check out this article: http://example.com/2023/03/06/mysql-mysql-05/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/03/06/mysql-mysql-05/&title=mysql数据管理"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/03/06/mysql-mysql-05/&title=mysql数据管理"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/03/06/mysql-mysql-05/&title=mysql数据管理"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/03/06/mysql-mysql-05/&title=mysql数据管理"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/03/06/mysql-mysql-05/&name=mysql数据管理&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/03/06/mysql-mysql-05/&t=mysql数据管理"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2023
+    Littleblue
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/categories/">categories</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/littleblue55">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
