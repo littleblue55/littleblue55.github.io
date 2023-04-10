@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-07T08:48:10.762Z</updated>
+  <updated>2023-04-07T09:30:16.007Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,15 +17,27 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>post</title>
+    <title>react-组件</title>
     <link href="http://example.com/2023/04/07/react-react-04/"/>
     <id>http://example.com/2023/04/07/react-react-04/</id>
     <published>2023-04-07T08:48:10.000Z</published>
-    <updated>2023-04-07T08:48:10.762Z</updated>
+    <updated>2023-04-07T09:30:16.007Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="react-组件的介绍"><a href="#react-组件的介绍" class="headerlink" title="react 组件的介绍"></a>react 组件的介绍</h2><ul><li>组件是React的<font color='red'>一等公民</font>，使用 React就是在用组件</li><li>组件表示页面中的部分功能</li><li>组合多个组件实现完整的页面功能</li><li>特点:可复用、独立、可组合</li></ul><h2 id="组件的两种创建方式"><a href="#组件的两种创建方式" class="headerlink" title="组件的两种创建方式"></a>组件的两种创建方式</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;react-组件的介绍&quot;&gt;&lt;a href=&quot;#react-组件的介绍&quot; class=&quot;headerlink&quot; title=&quot;react 组件的介绍&quot;&gt;&lt;/a&gt;react 组件的介绍&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;组件是React的&lt;font color=&#39;red&#39;&gt;一</summary>
+      
     
     
     
+    <category term="react" scheme="http://example.com/categories/react/"/>
     
+    
+    <category term="react" scheme="http://example.com/tags/react/"/>
     
   </entry>
   
@@ -176,9 +188,9 @@
     <category term="Vue" scheme="http://example.com/categories/Vue/"/>
     
     
-    <category term="JavaScript" scheme="http://example.com/tags/JavaScript/"/>
-    
     <category term="Vue" scheme="http://example.com/tags/Vue/"/>
+    
+    <category term="JavaScript" scheme="http://example.com/tags/JavaScript/"/>
     
     <category term="防抖" scheme="http://example.com/tags/%E9%98%B2%E6%8A%96/"/>
     
