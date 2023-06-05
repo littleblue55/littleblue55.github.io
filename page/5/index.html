@@ -6,8 +6,8 @@
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/apple-touch-icon-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
@@ -156,7 +156,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/Amap-Amap-01/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/element-element-03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -170,7 +170,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/02/08/Amap-Amap-01/" class="post-title-link" itemprop="url">高德地图-Web</a>
+            <a href="/2023/02/08/element-element-03/" class="post-title-link" itemprop="url">element-ui的el-dialog的遮罩层在模态框的前面bug</a>
         </h2>
 
         <div class="post-meta">
@@ -179,358 +179,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2023-02-08 10:45:01" itemprop="dateCreated datePublished" datetime="2023-02-08T10:45:01+08:00">2023-02-08</time>
+              <time title="Created: 2023-02-08 14:18:32 / Modified: 14:19:39" itemprop="dateCreated datePublished" datetime="2023-02-08T14:18:32+08:00">2023-02-08</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-03 14:59:46" itemprop="dateModified" datetime="2023-03-03T14:59:46+08:00">2023-03-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BB%84%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">组件</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h3><p><a target="_blank" rel="noopener" href="https://lbs.amap.com/">https://lbs.amap.com</a></p>
-<h3 id="1-准备"><a href="#1-准备" class="headerlink" title="1. 准备"></a>1. 准备</h3><ul>
-<li>登录后，在进入「应用管理」 页面「创建新应用」</li>
-<li>为应用<strong>添加 Key</strong>，「服务平台」一项请选择 <strong>Web 端 ( JSAPI )</strong> ，设置域名白名单，可选（建议设置域名白名单）。</li>
-</ul>
-<p>​    <img src="image-20230208104934764.png"></p>
-<p>提交后会有一个key和安全密钥</p>
-<h3 id="2-Vue"><a href="#2-Vue" class="headerlink" title="2. Vue"></a>2. Vue</h3><ol>
-<li><p>安装@amap/amap-jsapi-loader</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @amap/amap-jsapi-loader</span><br></pre></td></tr></table></figure></li>
-<li><p>在main.js中配置安全密钥</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置安全密钥</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">_AMapSecurityConfig</span> = &#123;</span><br><span class="line">  <span class="attr">securityJsCode</span>: <span class="string">&#x27;47d307eb938d663d5040fb9e2c867a4e&#x27;</span> <span class="comment">//*  安全密钥</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>使用-demo</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">    &lt;!-- 用来显示地图 --&gt;</span><br><span class="line">    &lt;!-- 可以不写宽度，但一定要有高度 --&gt;</span><br><span class="line">    &lt;div id=&quot;Map&quot; style=&quot;height: 1080px&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    //引入高德地图</span><br><span class="line">	import AMapLoader from &#x27;@amap/amap-jsapi-loader&#x27;</span><br><span class="line">  import &#123; lngLats &#125; from &quot;../../api/navigator.js&quot;</span><br><span class="line">	export default &#123;</span><br><span class="line">		name: &#x27;IndexMap&#x27;,</span><br><span class="line">		data() &#123;</span><br><span class="line">			return &#123;</span><br><span class="line">        map: null, //地图实例,</span><br><span class="line">				lnglats:[115.25,39.26],</span><br><span class="line">				marker:null,</span><br><span class="line">				mapCenter:&#123;&#125;,</span><br><span class="line">				mapMarker:[],</span><br><span class="line">				lnglatData:[]</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">        props: &#123;</span><br><span class="line">          mapData: Array</span><br><span class="line">        &#125;,</span><br><span class="line">        async mounted () &#123;</span><br><span class="line">			// 先获取经纬度数据</span><br><span class="line">			// 处理获取到的数据</span><br><span class="line">            //  res = [];</span><br><span class="line">            // console.log(this.mapData)</span><br><span class="line">            // this.lnglatData = this.mapData</span><br><span class="line">            // await this.handleLngLats(this.lnglatData)</span><br><span class="line">            // this.initMap()</span><br><span class="line">            lngLats(&#123;data:&quot;&quot;&#125;).then(async (res)=&gt;&#123;</span><br><span class="line">              this.lnglatData = res.coordinate</span><br><span class="line">              await this.handleLngLats(this.lnglatData)</span><br><span class="line">              this.initMap()</span><br><span class="line">            &#125;)</span><br><span class="line">		&#125;,</span><br><span class="line">		methods: &#123;</span><br><span class="line">			initMap() &#123;</span><br><span class="line">				AMapLoader.load(&#123;</span><br><span class="line">					key: &quot;4dec70081c5d9aac3302fea2c286257c&quot;, // 申请好的Web端开发者Key，首次调用 load 时必填</span><br><span class="line">					//2.0版本太卡了 ，所以使用的1.4.0版本  其插件也有不同  如：ToolBar</span><br><span class="line">					version: &quot;1.4.0&quot;, // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15</span><br><span class="line">					resizeEnable: true,</span><br><span class="line">					plugins: [</span><br><span class="line">						&quot;AMap.ToolBar&quot;, //工具条</span><br><span class="line">						&quot;AMap.Scale&quot;, // 比例尺</span><br><span class="line">						&quot;AMap.Geolocation&quot;//定位</span><br><span class="line">					], // 需要使用的的插件列表，如比例尺&#x27;AMap.Scale&#x27;等</span><br><span class="line">				&#125;).then( (AMap) =&gt; &#123;</span><br><span class="line">					// console.log(AMap);</span><br><span class="line">					this.map = new AMap.Map(&quot;Map&quot;, &#123; //设置地图容器id/这里的参数有许多可根据需要添加  点击下面《map地图参数》跳转</span><br><span class="line">						mapStyle: &#x27;amap://styles/5ed80c38b0497ad5b3cd1648590002df&#x27;,</span><br><span class="line">                        viewMode: &quot;3D&quot;, //是否为3D地图模式</span><br><span class="line">						pitch:30,// 地图俯仰角度，有效范围 0 度- 83 度</span><br><span class="line">						zoom: 12, //初始化地图级别</span><br><span class="line">						center: this.mapCenter.position, //初始化地图中心点位置</span><br><span class="line">					&#125;);</span><br><span class="line">					// console.log(this.mapCenter,this.mapMarker)</span><br><span class="line">					this.markerAdd(this.mapMarker)</span><br><span class="line">					this.centerMarker(this.mapCenter)</span><br><span class="line">				&#125;).catch(e =&gt; &#123;</span><br><span class="line">					// console.log(e);</span><br><span class="line">					this.$message.error(e)</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;,</span><br><span class="line">			// 给非中心点添加marker</span><br><span class="line">			markerAdd(data)&#123;</span><br><span class="line">				for( var i = 0; i &lt; data.length; i++)&#123;</span><br><span class="line">					// let position = this.arrLngLat(data[i].lng, data[i].lat)</span><br><span class="line">                    if( data[i].wens_latitude == &quot;&quot; &amp;&amp; data[i].wens_precision ==&quot;&quot; )&#123;</span><br><span class="line">                      continue</span><br><span class="line">                    &#125;</span><br><span class="line">					var markerPoint = new AMap.Marker(&#123;</span><br><span class="line">						position: data[i].position, // 经纬度</span><br><span class="line">						offset: new AMap.Pixel(85, 18), // 标记点偏移量</span><br><span class="line">						icon: require(&#x27;../../assets/images/icon_01.png&#x27;), // 添加 Icon 图标 URL（不加icon应该有默认标记）</span><br><span class="line">						title: data[i].wens_village,</span><br><span class="line">						extData: data[i].id</span><br><span class="line">					&#125;)</span><br><span class="line">					markerPoint.on(&#x27;click&#x27;, (e)=&gt;&#123;</span><br><span class="line">						let extData = e.target.getExtData()</span><br><span class="line">						this.filterCenter(extData)</span><br><span class="line">						this.map.clearMap();</span><br><span class="line">						this.centerMarker(this.mapCenter)</span><br><span class="line">						this.markerAdd(this.mapMarker)</span><br><span class="line">					&#125;)</span><br><span class="line">					this.map.add(markerPoint)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;,</span><br><span class="line">			// 给中心点添加marker</span><br><span class="line">			centerMarker(data)&#123;</span><br><span class="line">				this.map.setZoomAndCenter(12, data.position)//同时设置zoom和中心点</span><br><span class="line">				var markerPoint = new AMap.Marker(&#123;</span><br><span class="line">					position: data.position,</span><br><span class="line">					offset: new AMap.Pixel(50, 0),</span><br><span class="line">					icon: require(&#x27;../../assets/images/index_11.png&#x27;), // 添加 Icon 实例</span><br><span class="line">				&#125;);</span><br><span class="line">				markerPoint.setLabel(&#123;</span><br><span class="line">					direction:&#x27;top&#x27;,</span><br><span class="line">					offset: new AMap.Pixel(0, 0),  //设置文本标注偏移量</span><br><span class="line">					content: `&lt;div class=&#x27;info&#x27;&gt;$&#123;data.wens_village&#125;&lt;/div&gt;`, //设置文本标注内容</span><br><span class="line">				&#125;);</span><br><span class="line">				// markerPoint.on(&#x27;click&#x27;, (e)=&gt;&#123;</span><br><span class="line">				// 	console.log(e.target.getPosition())</span><br><span class="line">				// &#125;)</span><br><span class="line">				this.map.add(markerPoint)</span><br><span class="line">			&#125;,</span><br><span class="line">			fomatFloat(num,pos)&#123;</span><br><span class="line">				return Math.round(num*Math.pow(10, pos))/Math.pow(10, pos);</span><br><span class="line">			&#125;,</span><br><span class="line">			// 将lng，lat组成position</span><br><span class="line">			clearNull(data)&#123;</span><br><span class="line">				const arr = []</span><br><span class="line">                for(var i = 0 ; i &lt; data.length ; i++ )&#123;</span><br><span class="line">                  if(data[i].cflongitude != null &amp;&amp; data[i].cflatitude != null)&#123;</span><br><span class="line">                    arr.push(data[i])</span><br><span class="line">                  &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                return arr</span><br><span class="line">			&#125;,</span><br><span class="line">			// 处理获取到的数据</span><br><span class="line">			handleLngLats(data)&#123;</span><br><span class="line">				this.mapMarker = []</span><br><span class="line">				for(let i = 0; i &lt; data.length; i++)&#123;</span><br><span class="line">					const arr=[]</span><br><span class="line">					arr.push(data[i].wens_latitude, data[i].wens_precision)</span><br><span class="line">					data[i].position = arr</span><br><span class="line">					if(i===0)&#123;</span><br><span class="line">						this.mapCenter = data[i]</span><br><span class="line">					&#125;else&#123;</span><br><span class="line">						this.mapMarker.push(data[i])</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;,</span><br><span class="line">			// 点击时将点击的点设置成中心点，再将其他点设置成普通点</span><br><span class="line">			filterCenter(data)&#123;</span><br><span class="line">				let arrCenter = this.lnglatData.filter(item =&gt; item.id==data )</span><br><span class="line">				let	arrOther = this.lnglatData.filter(item =&gt; item.id!=data )</span><br><span class="line">				this.mapCenter = arrCenter[0]</span><br><span class="line">				this.mapMarker = arrOther</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">  ::v-deep .amap-marker-label&#123;</span><br><span class="line">	border: 1px solid #70e3fe;</span><br><span class="line">	background-color: #0f1f6d63;</span><br><span class="line">	color: #70e3fe;</span><br><span class="line">	font-size: 20px;</span><br><span class="line">	line-height: 60px;</span><br><span class="line">	border-radius: 50px ;</span><br><span class="line">	padding: 0 60px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/Hexo-Hexo-03/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Littleblue">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Littleblue">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/02/08/Hexo-Hexo-03/" class="post-title-link" itemprop="url">hexo博客删除文章</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2023-02-08 10:32:41" itemprop="dateCreated datePublished" datetime="2023-02-08T10:32:41+08:00">2023-02-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-03 14:58:12" itemprop="dateModified" datetime="2023-03-03T14:58:12+08:00">2023-03-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-删除-deploy-git文件"><a href="#1-删除-deploy-git文件" class="headerlink" title="1. 删除.deploy_git文件"></a>1. 删除.deploy_git文件</h3><p><img src="image-20230208103424992.png"></p>
-<h3 id="2-清除缓存文件-db-json-和已生成的静态文件-public-。"><a href="#2-清除缓存文件-db-json-和已生成的静态文件-public-。" class="headerlink" title="2.清除缓存文件 (db.json) 和已生成的静态文件 (public)。"></a>2.清除缓存文件 (<code>db.json</code>) 和已生成的静态文件 (<code>public</code>)。</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-重新部署"><a href="#3-重新部署" class="headerlink" title="3.重新部署"></a>3.重新部署</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/Hexo-Hexo-02/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Littleblue">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Littleblue">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/02/08/Hexo-Hexo-02/" class="post-title-link" itemprop="url">hexo博客无法显示图片</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2023-02-08 09:57:16" itemprop="dateCreated datePublished" datetime="2023-02-08T09:57:16+08:00">2023-02-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-03 14:58:04" itemprop="dateModified" datetime="2023-03-03T14:58:04+08:00">2023-03-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-修改Typora的设置"><a href="#1-修改Typora的设置" class="headerlink" title="1.修改Typora的设置"></a>1.修改Typora的设置</h3><p>文件 =&gt; 偏好设置 =&gt; 图像 =&gt; 插入图片时 =&gt; 复制到指定位置</p>
-<p><img src="image-20230208095905209.png"></p>
-<p><img src="image-20230208100040035.png"></p>
-<h3 id="2-修改-config-yml"><a href="#2-修改-config-yml" class="headerlink" title="2.修改_config.yml"></a>2.修改_config.yml</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-生成新的md文件"><a href="#3-生成新的md文件" class="headerlink" title="3.生成新的md文件"></a>3.生成新的md文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;文件名&quot;   #会同时生成一个同名文件夹</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-在md文件中的图片去掉其他内容只保留图片名字"><a href="#4-在md文件中的图片去掉其他内容只保留图片名字" class="headerlink" title="4.在md文件中的图片去掉其他内容只保留图片名字"></a>4.在md文件中的图片去掉其他内容只保留图片名字</h3><p><img src="image-20230208100351544.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/07/Hexo-Hexo-01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Littleblue">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Littleblue">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/02/07/Hexo-Hexo-01/" class="post-title-link" itemprop="url">hexo开始</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2023-02-07 17:25:55" itemprop="dateCreated datePublished" datetime="2023-02-07T17:25:55+08:00">2023-02-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-03 14:58:50" itemprop="dateModified" datetime="2023-03-03T14:58:50+08:00">2023-03-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-安装hexo"><a href="#1-安装hexo" class="headerlink" title="1.安装hexo"></a>1.安装hexo</h3><p>全部安装hexo-cli</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli  </span><br></pre></td></tr></table></figure>
-
-<h3 id="2-初始化博客"><a href="#2-初始化博客" class="headerlink" title="2.初始化博客"></a>2.初始化博客</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20230207173207458.png"></p>
-<h3 id="3-静态部署"><a href="#3-静态部署" class="headerlink" title="3.静态部署"></a>3.静态部署</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g   # hexo generate的缩写</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-启动服务器"><a href="#4-启动服务器" class="headerlink" title="4.启动服务器"></a>4.启动服务器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s   # hexo server的缩写</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-github创建库"><a href="#5-github创建库" class="headerlink" title="5.github创建库"></a>5.github创建库</h3><p>1.创建一个新的库</p>
-<p><img src="image-20230208092217715.png"></p>
-<p>2.过一会 点击 settings</p>
-<p><img src="image-20230208092311096.png"></p>
-<p>3.左边导航栏 Pages-&gt;Github Pages-&gt;看到有链接就可以（刚创建就打开Pages可能看不到，要等会）</p>
-<p><img src="image-20230208092447186.png"></p>
-<h3 id="6-修改-config-yml文件"><a href="#6-修改-config-yml文件" class="headerlink" title="6.修改_config.yml文件"></a>6.修改_config.yml文件</h3><p>打开文件拉到最后添加下面的内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/littleblue55/littleblue55.github.io.git  #你的仓库地址</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20230208092801764.png"></p>
-<h3 id="7-部署"><a href="#7-部署" class="headerlink" title="7.部署"></a>7.部署</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d   # hexo deploy的缩写 </span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/07/Vue-Vue-01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Littleblue">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Littleblue">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/02/07/Vue-Vue-01/" class="post-title-link" itemprop="url">Vue笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2023-02-07 17:12:28" itemprop="dateCreated datePublished" datetime="2023-02-07T17:12:28+08:00">2023-02-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-02-08 14:14:54" itemprop="dateModified" datetime="2023-02-08T14:14:54+08:00">2023-02-08</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -552,19 +204,661 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="1-try…catch"><a href="#1-try…catch" class="headerlink" title="1.try…catch.."></a>1.try…catch..</h2><p>写法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="title function_">nonExistentFunction</span>();</span><br><span class="line">&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(error);</span><br><span class="line">  <span class="comment">// expected output: ReferenceError: nonExistentFunction is not defined</span></span><br><span class="line">  <span class="comment">// Note - error messages will vary depending on browser</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p>原因： 是因为遮罩层插入进了body标签下，z-index高于当前父元素。</p>
+<p>解决方法：</p>
+<p>在el-dialog标签里加上**:modal-append-to-body=”false”**就可以了。</p>
+<p><img src="image-20230208141929346.png"></p>
 
-<h2 id="2-动态设置button可用或者不可用"><a href="#2-动态设置button可用或者不可用" class="headerlink" title="2.动态设置button可用或者不可用"></a>2.动态设置button可用或者不可用</h2><p>用button的disabled属性</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;button :disabled=&quot;dis&quot;&gt;&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">data()&#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    dis:false,//false时可用，true不可用</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
 
-<h2 id="3-动态背景"><a href="#3-动态背景" class="headerlink" title="3.动态背景"></a>3.动态背景</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;about&quot; :style=&quot;&#123;backgroundImage:&#x27;url(&#x27;+pic+&#x27;)&#x27;&#125;&quot;&gt;</span><br><span class="line"></span><br><span class="line">data()&#123;</span><br><span class="line">	return &#123;</span><br><span class="line">    pic:require(&#x27;@/assets/bg.jpg&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div </span><br><span class="line">  class=&quot;about&quot; </span><br><span class="line">  :style=&quot;&#123;backgroundImage:&#x27;url(&#x27;+require(&#x27;@/assets/bg.jpg&#x27;)+&#x27;)&#x27;&#125;&quot;</span><br><span class="line">  &gt;&lt;/div&gt;</span><br><span class="line">&lt;img :src=&quot;require(&#x27;@/assets/bg.jpg&#x27;)&quot;&gt;</span><br></pre></td></tr></table></figure>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-<h2 id="4-用js实现时间减去前1小时，1天，1个月，1年"><a href="#4-用js实现时间减去前1小时，1天，1个月，1年" class="headerlink" title="4.用js实现时间减去前1小时，1天，1个月，1年"></a>4.用js实现时间减去前1小时，1天，1个月，1年</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sdtime1 = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;2018-03-22 16:14:55&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> sdtime2 = sdtime1.<span class="title function_">setHours</span>(sdtime1.<span class="title function_">getHours</span>() -<span class="number">1</span>)<span class="comment">//小时</span></span><br><span class="line"><span class="keyword">var</span> sdtime3=<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">setDate</span>((<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getDate</span>()-<span class="number">1</span>))<span class="comment">//1天</span></span><br><span class="line"><span class="keyword">var</span> sdtime4=<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">setMonth</span>((<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getMonth</span>()-<span class="number">1</span>))<span class="comment">//一个月</span></span><br><span class="line"><span class="keyword">var</span> sdtime5=<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">setFullYear</span>((<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getFullYear</span>()-<span class="number">1</span>))<span class="comment">//一年</span></span><br></pre></td></tr></table></figure>
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/element-element-01/">
 
-<h2 id="5-列表循环赋值不一样的ref"><a href="#5-列表循环赋值不一样的ref" class="headerlink" title="5.列表循环赋值不一样的ref"></a>5.列表循环赋值不一样的ref</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-for=&quot;(data,index) in datalist&quot; :key=&quot;index&quot;&gt; </span><br><span class="line">   &lt;div :ref=&quot;`refTable$&#123;index&#125;`&quot; @click=&quot;handleClick(index)&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">handleClick(index)&#123;</span><br><span class="line">	let table = eval(&#x27;this.$refs.refTable&#x27;+index)[0] //获取到对应index的</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Littleblue">
+      <meta itemprop="description" content="">
+    </span>
 
-<h2 id="6-在vue-export-default-外部调用内部的属性和方法"><a href="#6-在vue-export-default-外部调用内部的属性和方法" class="headerlink" title="6.在vue export default 外部调用内部的属性和方法"></a>6.在vue export default 外部调用内部的属性和方法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  var vm = null</span><br><span class="line">  vm.avg</span><br><span class="line">  export default &#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        avg:&quot;111&quot;</span><br><span class="line">      &#125;    </span><br><span class="line">    &#125;</span><br><span class="line">    created () &#123;</span><br><span class="line">      vm = this</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Littleblue">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/08/element-element-01/" class="post-title-link" itemprop="url">监听el-table 滚动事件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-02-08 14:04:47 / Modified: 14:16:14" itemprop="dateCreated datePublished" datetime="2023-02-08T14:04:47+08:00">2023-02-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>el-table上加上ref=”table”，给他变了的bodyWrapper加上滚动的监听事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">table</span>.<span class="property">bodyWrapper</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;scroll&#x27;</span>,<span class="function">(<span class="params">e</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> scrollTop = e.<span class="property">target</span>.<span class="property">scrollTop</span></span><br><span class="line">  <span class="comment">// 变量windowHeight是可视区的高度</span></span><br><span class="line">  <span class="keyword">let</span> windowHeight = e.<span class="property">target</span>.<span class="property">clientHeight</span> || e.<span class="property">target</span>.<span class="property">clientHeight</span> <span class="comment">//固定</span></span><br><span class="line">  <span class="comment">// 变量scrollHeight是滚动条的总高度</span></span><br><span class="line">  <span class="keyword">let</span> scrollHeight = e.<span class="property">target</span>.<span class="property">scrollHeight</span> || e.<span class="property">target</span>.<span class="property">scrollHeight</span> <span class="comment">//固定</span></span><br><span class="line">  <span class="comment">//当滚动条滑动到底部的时候</span></span><br><span class="line">  scrollTop + windowHeight = scrollHeight</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/element-element-02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Littleblue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Littleblue">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/08/element-element-02/" class="post-title-link" itemprop="url">el-form表单校验</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-02-08 14:04:41 / Modified: 14:18:25" itemprop="dateCreated datePublished" datetime="2023-02-08T14:04:41+08:00">2023-02-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-校验手机号"><a href="#1-校验手机号" class="headerlink" title="1. 校验手机号"></a>1. 校验手机号</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">&quot;电话&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">prop</span>=<span class="string">&quot;customerTel&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model.number</span>=<span class="string">&quot;orderMessage.customerTel&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">customerTel</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>,</span><br><span class="line">      <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&#x27;请输入手机号&#x27;</span>,</span><br><span class="line">      <span class="attr">trigger</span>: <span class="string">&#x27;blur&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">pattern</span>: <span class="regexp">/^0&#123;0,1&#125;(13[0-9]|15[7-9]|153|156|18[7-9])[0-9]&#123;8&#125;$/</span>,</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&#x27;手机号格式不对&#x27;</span>,</span><br><span class="line">      <span class="attr">trigger</span>: <span class="string">&#x27;blur&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line"> ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-校验身份证号码"><a href="#2-校验身份证号码" class="headerlink" title="2. 校验身份证号码"></a>2. 校验身份证号码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">&quot;身份证号&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">prop</span>=<span class="string">&quot;customerIdCard&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model</span>=<span class="string">&quot;orderMessage.customerIdCard&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">placeholder</span>=<span class="string">&quot;请填写证件号码&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">customerIdCard</span>: [</span><br><span class="line">    &#123; <span class="attr">required</span>: <span class="literal">true</span>, <span class="attr">message</span>: <span class="string">&#x27;请填写证件号码&#x27;</span>, <span class="attr">trigger</span>: <span class="string">&#x27;blur&#x27;</span> &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">pattern</span>: <span class="regexp">/(^[1-9]\d&#123;5&#125;(18|19|([23]\d))\d&#123;2&#125;((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d&#123;3&#125;[0-9Xx]$)|(^[1-9]\d&#123;5&#125;\d&#123;2&#125;((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d&#123;2&#125;$)/</span>,</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&#x27;证件号码格式有误！&#x27;</span>,</span><br><span class="line">      <span class="attr">trigger</span>: <span class="string">&#x27;blur&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/%E5%85%B6%E4%BB%96-npm-02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Littleblue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Littleblue">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/08/%E5%85%B6%E4%BB%96-npm-02/" class="post-title-link" itemprop="url">npm全局安装依赖，但是用不用 --version查不到</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-02-08 13:54:14 / Modified: 14:02:08" itemprop="dateCreated datePublished" datetime="2023-02-08T13:54:14+08:00">2023-02-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>查找node位置 </p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">where</span> node</span><br><span class="line"><span class="comment">#在node js文件夹中创建npm_global和npm_cache</span></span><br><span class="line"><span class="comment">#添加环境变量 （这是我自己加的，不知道有没有作用）</span></span><br><span class="line"><span class="comment">#再安装 npm install -g xxx</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20230208140038928.png"></p>
+<p><img src="image-20230208140023846.png"></p>
+<p><img src="image-20230208140052435.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/%E5%85%B6%E4%BB%96-other-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Littleblue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Littleblue">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/08/%E5%85%B6%E4%BB%96-other-01/" class="post-title-link" itemprop="url">npm install项目不成功，换cnpm/yarn</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-02-08 13:49:58 / Modified: 13:52:18" itemprop="dateCreated datePublished" datetime="2023-02-08T13:49:58+08:00">2023-02-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.用yarn</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#全局安装yarn</span></span><br><span class="line">npm install <span class="literal">-g</span> yarn</span><br><span class="line"><span class="comment">#查看是否安装成功</span></span><br><span class="line">yarn <span class="literal">--version</span></span><br><span class="line"><span class="comment">#npm install</span></span><br><span class="line">yarn install</span><br></pre></td></tr></table></figure>
+
+<p>2.用cnpm</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#全局安装cnpm 淘宝镜像</span></span><br><span class="line">npm install <span class="literal">-g</span> cnpm <span class="literal">-registry</span>=https://registry.npm.taobao.org</span><br><span class="line"><span class="comment">#查看是否安装成功</span></span><br><span class="line">cnpm <span class="literal">-v</span></span><br><span class="line"><span class="comment">#npm install</span></span><br><span class="line">cnpm install</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/%E8%8B%A5%E4%BE%9D-%E8%8B%A5%E4%BE%9D-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Littleblue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Littleblue">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/08/%E8%8B%A5%E4%BE%9D-%E8%8B%A5%E4%BE%9D-01/" class="post-title-link" itemprop="url">用若依遇到的一些问题记录</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-02-08 13:46:43 / Modified: 13:53:00" itemprop="dateCreated datePublished" datetime="2023-02-08T13:46:43+08:00">2023-02-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">前端框架</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-接口报错403"><a href="#1-接口报错403" class="headerlink" title="1.接口报错403"></a>1.接口报错403</h2><p>是由于token的问题。一边有token，一边没token。</p>
+<h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h3><p>api中加上header</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">headers : &#123;</span><br><span class="line">  isToken : false</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20230208134851181.png"></p>
+<h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h3><p>// 使用 permitAll() 方法所有人都能访问，包括带上 token 访问</p>
+<p>.antMatchers(“/admins/**”).permitAll()</p>
+<p>// 使用 anonymous() 所有人都能访问，但是带上 token 访问后会报错</p>
+<p>.antMatchers(“/admins/**”).anonymous()</p>
+<p>postman访问接口ok，是因为postman没token，前端报错403，是因为前端header带有token。</p>
+<h2 id="2-数据字典的用法"><a href="#2-数据字典的用法" class="headerlink" title="2.数据字典的用法"></a>2.数据字典的用法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; getDicts <span class="keyword">as</span> getDicts &#125; <span class="keyword">from</span> <span class="string">&#x27;@/api/system/dict/data&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">getDicts</span>(<span class="string">&quot;sys_user_sex&quot;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span>&#123;</span><br><span class="line">	获取到sys_user_sex这个字典的数据</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-图片显示问题"><a href="#3-图片显示问题" class="headerlink" title="3.图片显示问题"></a>3.图片显示问题</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;img <span class="keyword">class</span>=<span class="string">&quot;proBox-img&quot;</span> :src=<span class="string">&quot;url&quot;</span> &gt;</span><br><span class="line"></span><br><span class="line">imgurl=<span class="string">&quot;/profile/upload/2022/12/07/preson_page-0001_20221207144413A003.jpg&quot;</span></span><br><span class="line"><span class="keyword">let</span> url = <span class="title function_">realUrl</span>(imgurl)</span><br><span class="line">  </span><br><span class="line"><span class="keyword">function</span> <span class="title function_">realUrl</span>(<span class="params">val</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> process.<span class="property">env</span>.<span class="property">VUE_APP_BASE_API</span> + val</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 背景图无法解决</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/CSS-CSS-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Littleblue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Littleblue">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/08/CSS-CSS-01/" class="post-title-link" itemprop="url">超出范围的文字用"..."显示</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-02-08 13:41:49" itemprop="dateCreated datePublished" datetime="2023-02-08T13:41:49+08:00">2023-02-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-03-03 15:00:01" itemprop="dateModified" datetime="2023-03-03T15:00:01+08:00">2023-03-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-%E5%92%8C-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML 和 CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-1单行文本"><a href="#1-1单行文本" class="headerlink" title="1.1单行文本"></a>1.1单行文本</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="attribute">white-space</span>: nowrap;</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20230208134344066.png"></p>
+<h3 id="1-2多行文本"><a href="#1-2多行文本" class="headerlink" title="1.2多行文本"></a>1.2多行文本</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>: -webkit-box; <span class="comment">/*重点，不能用block等其他，将对象作为弹性伸缩盒子模型显示*/</span></span><br><span class="line">-webkit-box-orient: vertical; <span class="comment">/*从上到下垂直排列子元素（设置伸缩盒子的子元素排列方式）*/</span></span><br><span class="line">-webkit-line-clamp: <span class="number">3</span>; <span class="comment">/*行数，超出三行隐藏且多余的用省略号表示...*/</span></span><br><span class="line">line-clamp: <span class="number">3</span>; </span><br><span class="line"><span class="attribute">word-break</span>: break-all; </span><br><span class="line"><span class="attribute">overflow</span>: hidden; </span><br><span class="line"><span class="attribute">max-width</span>: <span class="number">100%</span>; </span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/JS-JS-02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Littleblue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Littleblue">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/08/JS-JS-02/" class="post-title-link" itemprop="url">获取数据类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-02-08 12:17:01 / Modified: 14:26:56" itemprop="dateCreated datePublished" datetime="2023-02-08T12:17:01+08:00">2023-02-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-typeof"><a href="#1-typeof" class="headerlink" title="1.typeof"></a>1.typeof</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="string">&quot;Bill&quot;</span>                 <span class="comment">// 返回 &quot;string&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">3.14</span>                   <span class="comment">// 返回 &quot;number&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="title class_">NaN</span>                    <span class="comment">// 返回 &quot;number&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">false</span>                  <span class="comment">// 返回 &quot;boolean&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]              <span class="comment">// 返回 &quot;object&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> &#123;<span class="attr">name</span>:<span class="string">&#x27;Bill&#x27;</span>, <span class="attr">age</span>:<span class="number">62</span>&#125;  <span class="comment">// 返回 &quot;object&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="title class_">Date</span>()             <span class="comment">// 返回 &quot;object&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;         <span class="comment">// 返回 &quot;function&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> myCar                  <span class="comment">// 返回 &quot;undefined&quot; *</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>                   <span class="comment">// 返回 &quot;object&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-constructor-属性"><a href="#2-constructor-属性" class="headerlink" title="2. constructor 属性"></a>2. constructor 属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Bill&quot;</span>.<span class="property">constructor</span>                 <span class="comment">// 返回 &quot;function String()  &#123; [native code] &#125;&quot;</span></span><br><span class="line">(<span class="number">3.14</span>).<span class="property">constructor</span>                 <span class="comment">// 返回 &quot;function Number()  &#123; [native code] &#125;&quot;</span></span><br><span class="line"><span class="literal">false</span>.<span class="property">constructor</span>                  <span class="comment">// 返回 &quot;function Boolean() &#123; [native code] &#125;&quot;</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].<span class="property">constructor</span>              <span class="comment">// 返回 &quot;function Array()   &#123; [native code] &#125;&quot;</span></span><br><span class="line">&#123;<span class="attr">name</span>:<span class="string">&#x27;Bill&#x27;</span>, <span class="attr">age</span>:<span class="number">62</span>&#125;.<span class="property">constructor</span>  <span class="comment">// 返回&quot; function Object()  &#123; [native code] &#125;&quot;</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="property">constructor</span>             <span class="comment">// 返回 &quot;function Date()    &#123; [native code] &#125;&quot;</span></span><br><span class="line"><span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;.<span class="property">constructor</span>         <span class="comment">// 返回 &quot;function Function()&#123; [native code] &#125;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过检查 constructor 属性来确定某个对象是否为数组（包含单词 “Array”）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isArray</span>(<span class="params">myArray</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> myArray.<span class="property">constructor</span>.<span class="title function_">toString</span>().<span class="title function_">indexOf</span>(<span class="string">&quot;Array&quot;</span>) &gt; -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者检查对象是否是数组函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isArray</span>(<span class="params">myArray</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> myArray.<span class="property">constructor</span> === <span class="title class_">Array</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/HelloWorld/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Littleblue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Littleblue">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/08/HelloWorld/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-02-08 11:42:30 / Modified: 11:42:42" itemprop="dateCreated datePublished" datetime="2023-02-08T11:42:30+08:00">2023-02-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/08/JS-JS-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Littleblue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Littleblue">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/08/JS-JS-01/" class="post-title-link" itemprop="url">时间转换 -- dayjs，moment</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-02-08 11:28:14 / Modified: 12:18:19" itemprop="dateCreated datePublished" datetime="2023-02-08T11:28:14+08:00">2023-02-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install dayjs</span><br><span class="line">npm install moment</span><br></pre></td></tr></table></figure>
+
+<h4 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dayjs <span class="keyword">from</span> <span class="string">&quot;dayjs&quot;</span></span><br><span class="line"><span class="keyword">import</span> moment <span class="keyword">from</span> <span class="string">&quot;moment&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">dayjs</span>(<span class="string">&quot;2022-10-11T18&quot;</span>).<span class="title function_">format</span>(<span class="string">&quot;YYYY-MM-DD HH:mm:ss&quot;</span>) </span><br><span class="line"><span class="title function_">moment</span>(<span class="string">&quot;2022-10-11T18&quot;</span>).<span class="title function_">format</span>(<span class="string">&quot;YYYY-MM-DD HH:mm:ss&quot;</span>) </span><br></pre></td></tr></table></figure>
 
 
       
@@ -584,7 +878,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -650,7 +944,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -663,7 +957,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
